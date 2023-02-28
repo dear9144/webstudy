@@ -1,0 +1,98 @@
+<title>Docoument</title>
+</head>
+<body>
+    <style>
+        /*
+            transition
+            1. 특정 속성이 이행(transition)되는 과정을 볼 수 있다.
+            2. 주요 이행 속성
+                    all(디폴트), width, height, margin, padding 
+                    background, border
+                    opacity, visibility 
+                    transform(변형) -- 혼자 쓰지 않음 , 형태를 바꾸는 변형 (형태가 변하는걸 봄)  
+            */
+    </style>
+
+
+        <style>
+            .box1 {
+                width: 100px;
+                height: 100px;
+                border: 1px solid gray;
+                /* 박스의 크기 변화를 이행처리(transition) 처리하기 */
+                transition-property: all; 
+                /*all 모두라는 듯이니까 위의 너비 높이 border 전부를 의미(이행의 대상) 
+                모든 속성의 변화를 볼 수 있다 몇초 동안?*/
+                transition-duration: 3s;            /*3초 동안 */
+                transition-timing-function: linear; /* 일정한 속도로(linear) 변하는 속성의 변화를 볼 수 있다*/
+                transition-delay: 1s;               /* 1초 후에 이행 동작이(transition) 동작이 동작한다 
+                                                        마우스를 갖다대면 1초동안 아무 것도 없다가 3초간 
+                                                        너비 높이 border가 변함을 볼 수 있다(일정하게 크기가 변화함)*/
+            }
+            .box1:hover {
+                width: 200px;
+            }
+            .box1:active {
+                height: 200px;
+                /*마우스 꾹 누르면 위로 두배 마우스 갖다대면 가로로 두배*/ 
+            }
+        
+        
+        </style> 
+        <div class="box1">BOX</div>
+
+        <style>
+            .box2 {
+                margin: 0 auto;
+                width: 100px;
+                height: 100px;
+                border: 1px solid gray;
+                /* 변형(transform) 속성이 3초동안 이행되는(trasition)
+                되는 과정을 보겠다, 천천히 변형되는 */
+                transition-property: transform;
+                transition-duration: 3s;
+            }
+            .box2:active {
+                transform: scale(2, 2); /*크기를 바꾸겠다 , 
+                                        언제? 마우스 클릭했을때 로 2배, 
+                                        세로 2배 크기 변경*/
+            }
+
+        </style>
+        <div class="box2">BOX2</div>
+        <style>
+            .box3 {
+                width: 100px;
+                height: 100px;
+                border: 1px solid gray;
+                /* 변형속성이 1초동안 이행되는 과정을 보겠다  */
+                transition-property: transform;
+                transition-duration: 1s;
+            }
+            .box3:active {
+                transform: translate(300px, 100px);     /*가로 방향 300px 세로방향 100px 이동하기*/
+            }
+        </style>
+        <div class="box3">BOX3</div>
+        
+
+        <style>
+            .box4 {
+                margin: 0 auto;
+                width: 200px;
+                height: 50px;
+                border: 1px solid gray;
+                border-radius: 25px;
+                /* 변형 속성이  1초동안 이행되는 과정을 보겠다  */
+                transition-property: transform;
+                transition-duration:  1s;
+            }
+            .box4:active {
+                transform: rotate(1080deg); /*deg : 각도 transition이 없으면 눈에 보이는 것이 없음 */
+            }
+                        
+        </style>
+        <div class="box4">BOX4</div>
+        </body>
+        </html>
+    
