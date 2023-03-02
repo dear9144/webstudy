@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+    /*자바 스크립트로 인식 
+    JavaScript
+    1. ECMAScript(ES)
+    2. <script>
+            1) <head>, <body> 태그 어디든 존재할 수 있다.
+            2) JavaScript를 작성할 때 사용한다.
+    3. 주석
+            1)//
+            2)/* *   / 
+    4. HTML 구성 요소를 구조적으로 프로그레밍 할 수 있다.
+    5. HTML 구성 요소를 생성/삭제/수정 등의 조작을 할 수 있다.
+                없던 내용을 지워버릴 수도 있고 수정할 수 있고 등등
+     
+    */
+
+    </script>
+
+    <script>
+        //스크립트 새로 열기 <script>하면 됨 
+        /*
+                1. 기본 자료형 
+                    1) number  : 정수 /실수 구분이 없다. (int double 구분 안함)
+                                NaN(Not a Number), Infinity/-Infinity(+0/-0으로 나눈 값)
+
+                    2) string  : 소문자냐 대문자는 중요하지 않음, 문자/문자열 구분이 없다. (char, String)으로 나누지 않는다
+                                작은 따옴표('')와 큰 따옴표("") 둘 다 사용할 수 있음
+                                둘다 사용해도 되나 자바로 들어갈 시 인식이 안될 수 있으니 작은 따옴표는 쓰지 않는걸 추천
+                    3) boolean : true/false
+                    4) null    : java와 다르게 값이 개발자에 의해서 의도적으로 없다 
+                                굳이 비슷한걸 쓰자면 빈 문자열이라고 생각하면 됨  
+                    5) undefined : 값이 저장된 적이 없다. (java와 다르게 값을 초기화 하지 않는다면 null 값이지만 자스는 다름)
+                                   초기화를 하지 않은 변수의 상태 
+                2   JavaScript의 변수 특징 
+                    모든 걸 저장할 수 있음 (정수를 저장하다 갑자기 바꿔서 객체로 바꿀 수도 있고 변수의 타입이 존재하기를 하지만 가능하다 그런 언어들의 특징을 느슨한타입이라고 부름 )                  
+                    1) 동적 타입이다 (느슨한 타입이다, Java를 생각해보면 타이트)'
+                    2) 변수를 선언할 때 자료형을 결정하지 않는다 (작성x) - 뭘 저장하는 변수지..? 몰라 
+                    3) 변수에 값을 저장할 때 자료형이 결정된다. [Java와 가장 다른 점]
+                    4) 변수에 저장된 값을 바꾸면 자료형도 함께 바뀐다.
+                    5) 심지어 변수를 생략할 수도 있다. (ES6 : 최신 버젼 ES는 위에 ECMAScript(ES)참고
+                                                              반드시 선언이 필요한 새로운 변수 선언 키워드가 발표되었다.
+                                                              java는 형을 외우면 되는데 jas는 좀 다름 )
+                3   변수 선언 키워드(면접 갈 시 차이를 잘 알아야함 50퍼센트가 자스를 쓸 줄 알아야 함 )
+                    1) var (원래는 이것 밖에 없었음 변수선언의 최전선에 있었고 가장 유명한 아이)
+                       (1) 스코프(범위) : 범수가 적용되는 범위 , 함수 레벨 (이해 안되도 일단 적어 )
+                                          선언해놓음 이 함수 저함수 다 쓸 수 있음 , 
+                                          비슷한건 field 함수 ?
+                       (2) 변수 선언을 생략할 수 있다.
+                       (3) 동적 타입의 느슨한 타입 특징을 다 가지고 있음
+                       (4) 같은 변수명으로 다시 선언할 수 있다.
+                       (5) 변수 초기화를 생략할 수 있다. (그로인해 undefined 상태가 됨)
+                       (6) 저장된 값을 변경할 수 있다  
+                                           
+                    2) let(ES6 표준)
+                        (1) 스코프(범위) : 블록 레벨(코드 블록이라 함은 { }인데) -> 지역 변수의 개념임( 이 지역에서만 쓸 수 있어요)
+                        (2) 변수 선언을 생략할 수 없다. 
+                        (3) 같은 변수명으로 재선언 안됨 
+                        (4) 변수의 초기화를 생략할 수 있다. (undefined상태 아님, 메모리에 변수가 안 만들어진 상태)
+                                                             메모리에 만들어지지 않은 상태가 된다 
+                        (5) 저장된 값을 변경할 수 있다.
+                    3) const (java에선 final, ES6표준,let과 같이 나오는 아이)
+                       (1)  스코프(범위) : 블록 레벨(코드 블록이라 함은 { }인데)                  
+                       (2) 변수 선언을 생략할 수 없다. 
+                       (3) 같은 변수명으로 재선언 안됨 
+                       (4) 변수의 초기화를 생략할 수 없다. 
+                       (5) 저장된 값을 변경할 수 없다.
+                            뜻 자체는 향상
+
+                4. 호이스팅
+                    1) hoisting
+                    [중요]
+                    2) 코드 중에서 항상 먼저 처리되는 코드가 있다(java는 먼저 실행됐으면 하는 코드를 먼저 적으면 됐지만 이 경우에는 무조건 호이스팅 코드가 먼저 실행)
+                       ex : 변수 선언으로 치면 변수 생서을 먼저 하고 선언을 나중에 적어도 상관 없다 
+                            아무데나 넣고 싶은데 넣어도 됨 
+                    3) 호이스팅 대상 : 변수선언 (var, let , const), 함수 정의(function) 등                 
+                       */          
+
+    </script>
+
+    <script>
+     /* 
+        JavaScript 출력 방식 
+        1. 경고창 
+            alert(출력메시지)
+        2. 화면 출력
+            document.write(출력메시지)
+        3. 콘솔 출력 (개발자 도구 - Console 탭) 
+            Console.log(출력 메시지)
+            */
+        // alert('Hello World'); //세미콜론 생략 가능, 경고 메세지
+        // document.write('<h1>Hello World</h1>');
+        //console.log('Hello World'); 콘솔 창에서 출력
+
+    </script>
+
+    <script>
+        // [var에 대한]
+        //변수 선언 후 초기화 없으면 undefined 상태 
+        var a;
+        console.log(a);
+
+        //동일한 변수 이름으로 재선언 가능., 값이 저장되면서 타입이 정해짐 
+        var a;
+        a = 10;
+        console.log(a, typeof a); //콘솔에선 , 찍어 두개 값 출력 가능, 공백으로 나옴 
+
+        //동적 타입이 맞는가? (느슨한 타입이 맞는가)
+        a = 'Hello World';
+        console.log(a, typeof a);
+
+
+        //선언이 없어짐(선언 :var b;) 
+        b = false;
+        console.log(b, typeof b);
+
+        // 변수 선언이 항상 먼저 처리되는 호이스팅 
+        c = Math.sqrt(-25); //NaN
+        var c; 
+        console.log(c, typeof c);
+    </script>
+
+    <script>
+
+        /*1. 자료형 변환하기*/
+
+        var a = '100';
+        var n1 = Number(a); // a를 number로 변형시켜줌
+        var n2 = parseInt(a);
+        console.log(a, n1, n2);
+
+        var b = '1.5';
+        var n3 = Number(b);
+        var n4 = parseFloat(b); //double 개념 없음
+        console.log(b, n3, n4);
+
+
+        //2. 숫자를 문자로
+        var c = 200;
+        var str = String(c);
+        var str2 = c + '';
+        console.log(c, str, str2);
+
+
+    </script>
+</body>
+</html>
