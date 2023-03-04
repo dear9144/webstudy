@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        /*
+        
+        1. 산술 연산자 
+            1) 더하기 : +
+            2) 빼기   : +
+            3) 곱하기 : * 
+            4) 제곱   : ** (2 ** 3 = 2의 3제곱 = 8)
+            5) 나누기 : /  (5 / 2 = 2.5)
+            6) 나머지 : %  (5 % 2 = 1)
+            7) 몫     : 함수(parseInt(5/2) = 2, Math.floor(5/2) = 2)
+            8) 증감   : ++, --, 
+        2. 복합 연산자 
+            1) += 
+            2) -= 
+            3) *=, **=
+            4) /=, %=
+        3. 비교 연산 
+            1) 크다 : > 
+            2) 크거나같다 : >= 
+            3) 작거나 같다 : <= 
+            4) 작다        : <
+            5) 같다
+                == : 값만 비교 (1[숫자] == '1'[문자]이면 true)
+                === : 값과 타입을 비교 (1 === '1'이면 false )
+                완전한 동등비교를 원한다면 이퀄 3개를 쓰면 됨 
+                자바와 다른 점은 문자열도 비교 연산으로 비교한다 (equals [x])
+
+            6) 같지 않다 
+                != : 값만 비교 
+                !== : 값과 타입을 비교 
+
+        4. 논리 연산자 = java 
+            논리 AND : &&
+            논리 OR : ||
+            논리 NOT : !
+        
+        5. 조건 연산자 (if else를 대체하는 ) = java
+            (조건식) ? true일 때 : false일 때 처리할 데이터 [3항 연산자]
+        
+        6. 문자열 연산자
+            문자열 연결 : + 
+            + 이외의 산술 연산자(-,*,/)는 연산에 포함된 문자열을 숫자로 바꿔서 산술 연산으로 처리한다
+              java에서는 안되지만 jas는 가능 
+        
+    
+
+        */
+
+        var a = 10;
+        var b = 3;
+        console.log(a ** 3);
+        console.log(a / b, a % b , parseInt(a / b), Math.floor(a / b)); 
+
+
+        var c = 1;
+        var d = '1';
+        console.log(c == d, c != d);
+        console.log(c === d, c !== d);
+
+        //6번 예제
+        console.log(1 + '1'); //'11'
+        console.log('1' + '1'); //'11'
+        console.log(5 - '2'); // 자바에서는 안되지만 자스에서는 가능 ,3
+        console.log(5 * '2'); // 10
+        console.log(5 / '2'); //많이 나오지는 않음 문자열을 + 로 연결 가능하다는 게 더 중요하긴 함 
+
+    </script>
+
+    <script>
+        /*
+        최저 시급이 9,620 
+        8시간 까지는 최저 8시간 초과 근무 시 최저 시급 1.5배 
+        10시간 근무했을 시 일당 얼마? 
+        
+        */
+
+        var a = 9620;
+        console.log((a * 8) + (a * 3));
+
+
+        var payPerHour = 9620;
+        var workTime = 10;
+        var regularp = (payPerHour * workTime);
+        var extraPay = (workTime <= 8) ? 0 : payPerHour * 0.5 * (workTime - 8);
+        alert(regularp + extraPay);
+
+    </script>
+    
+</body>
+</html>
