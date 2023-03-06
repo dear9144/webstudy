@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*setTimeout
+            1. 한번만 동작하는 타이머 함수 
+            2. 동작
+                var id = setTimeout(동작할함수, 동작할시간(밀리초 단위로));
+                리턴값이 있음 , 변수를 하나 준비해(var id) 받을 준비를 하면 됨 
+            3. 동작 취소 
+                어떤 타이머가 있을대 더이상 타이머가 동작하지 않겠다 
+                id를 알아야 취소할 수 있음 
+                clearTimeout(id);
+
+        
+
+        var timerId = setTimeout(function(){
+            console.log('5초 지났다.');
+        }, 5000); //5초를 밀리초로 바꾸면? 밀리초 : 1000분의 1초 
+
+        clearTimeout(timerId); //동작이 안됨 
+        */
+    </script>
+
+    <script>
+        /*
+            2. setInterval
+                    1. 반복해서 동작하는 타이머 함수
+                    2. 동작 
+                        var id= setInterval(동작할함수, 동작할시간(밀리초 단위로));
+                    3. 동작 취소
+                        clearInterval(id);
+        */
+
+        /*반복해서 출력 , 1초마다 1씩 증가해서 보여주는 프로그램이 됨 
+        var n = 0;
+        var timerId = setInterval(function(){
+            console.log(n++);
+        },1000);
+        clearInterval(timerId);
+        */
+    </script>
+
+    <h1 id="timer1"></h1>
+    <script>
+
+    // 5초 타이머 구현하기(5 → 4 → 3 → 2 → 1 → 땡)
+    /*
+    var countDown = 5;
+    var timer1 = document.getElementById('timer1');
+    var timerId = setInterval(function(){
+        if(countDown == 0) {
+            timer1.textContent = '땡';
+            clearInterval(timerId);
+        } else {
+            timer1.textContent = countDown--;
+        }
+    }, 1000);
+*/
+    </script>
+
+    <script>
+        function ex() {
+            console.log('하하하');
+            ex(); //재귀 호출(recursive call), 반복적인일을 수행시 사용되고 자기가 자기를 호출하는 함수
+        }
+        ex(); //끝나는 조건을 안 걸었기 때문에 무한루프로 돌아감 
+    </script>
+
+    <script>
+        /*
+        재귀 호출이란? 
+        정의해둔 함수는 실행을 위해서 호출함 
+        그래서 정의와 호출이 따로 있음 
+        설명 추가로 적기 
+        */
+
+        /*재귀 호출 예시 : fanctorial 구하기 (5! = 5*4*3*2*1) - 성능 테스트 용으로 사용함
+        5! = 5 * 4! fnFactorial(5) = 5 * fnFcactorial(4)
+        4! = 4 * 3! fnFactorial(5) = 4 * fnFcactorial(3)
+        3! = 3 * 2! fnFactorial(5) = 3 * fnFcactorial(2)
+        2! = 2 * 1! fnFactorial(5) = 2 * fnFcactorial(1)
+        1! = 1 
+        -------------
+                    fnFactorial(n) = n * fnFcactorial(n - 1);
+        */
+
+        function fnFactorial(n){
+            if(n == 1) {
+                return 1; 
+            } else {
+                return n * fnFcactorial(n - 1);
+            }
+        }
+        console.log(fnFactorial(5));
+    </script>
+
+        <h1 id="timer2"></h1>
+        <script>
+                // 5초 타이머 구현하기(5 → 4 → 3 → 2 → 1 → 땡)
+
+                var timer2 = document.getElementById('timer2');
+                function fnTimer(countDown){
+                setTimeout(function(){
+                    if(countDown == 0){
+                        timer2.textCountent = '땡';
+                    } else {
+                        timer2.textContent = countDown;
+                        fnTimer(countDown - 1);
+                    }
+            }, 1000);
+        }
+                
+        fnTimer(5);
+
+                /*var timer2 = document.getElementById('timer2');
+                function fnTimer(countDown){
+                setTimeout(function(){
+                if(countDown == 0){
+                    timer2.textContent = '땡';
+                } else {
+                    timer2.textContent = countDown;
+                    fnTimer(countDown - 1);
+                }
+            }, 1000);
+        }
+
+        fnTimer(5);
+*/
+        </script>
+        
+
+    
+</body>
+</html>
