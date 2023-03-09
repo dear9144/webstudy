@@ -32,7 +32,7 @@
         <input type="text" value="영희야 사랑해" readonly>
         <br>
         <!-- disabled 속성 : 입력 상자를 사용할 수 없도록 만듬 -->
-        <input type="text" disabled>
+        <input type="text" placeholder="검색어를 입력하세요" disabled>
     </p>
 
     <!-- 2. 기타 <input> 태그 -->
@@ -136,7 +136,8 @@
         9. <form> 태그
             1) <form> 태그 내부에 입력 태그들을 배치한다.
             2) 서브밋(submit)은 <form> 태그 단위로 이루어진다.
-                (1) 서브밋 : <form> 태그에 속한 모든 입력 태그들에 입력된 값을 서버측으로 보내는 것을 말한다.
+                (1) 서브밋 : <form> 태그에 속한 모든 입력 태그들에 입력된 값을 서버측으로 보내는 
+                    것을 말한다.
                 (2) 서버 경로를 action 속성에 작성하고, 보내는 방법을 method 속성에 작성한다.
             3) 주요 속성
                 (1) action
@@ -174,22 +175,22 @@
         </form>
     </p>
 
-    <!-- 11. 입력 요소의 그룹 : <fieldset> -->
+    <!-- 11. 입력 요소의 그룹 : <fieldset> 네모박스 안에 라디오를 넣는다? fieldset의 제목이라고 생각하면 됨(legend)>-->
     <p>
         <fieldset>
             <legend>성별</legend>
-            <label for="male">
-                <input type="radio" name="gender" value="male" id="male">남
+            <label for="man">남
+                <input type="radio" name="gender" value="male" id="man">
             </label>
-            <label for="female">
-                <input type="radio" name="gender" value="female" id="female">여
+            <label for="women">
+                <input type="radio" name="gender" value="female" id="women">여
             </label>
         </fieldset>
     </p>
 
     <hr>
 
-    <h1>연습1</h1>
+    <h1>연습1</h1> <!-- post는 민감한 정보를 암호화 시켜서 하기 , get 그냥 주소창에 보낸다 -->
     <form method="post">
         <input type="text" name="id" placeholder="example@naver.com">
         <input type="password" name="pw" placeholder="비밀번호">

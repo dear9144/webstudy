@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        1. 이벤트 객체
+            1. 발생한 이벤트의 상세정보를 저장한 객체 
+            2. 이벤트가 발생하면 자동으로 생김 
+            3. 이벤트가 발생하면 이벤트 리스너에 인수로 전달된다
+
+        3. 이벤트 타입
+            1. 이벤트의 종류를 의미
+            2. 이벤트 객체의 type 속성으로 확인할 수 있다
+            3. 주요 이벤트 타입 
+                1. click : 클릭하면 동작
+                2. load  : HTML 문서 모두 읽은 뒤 동작
+                3. mouseover : 마우스를 가져다대면 동작 
+                4. mouseout : 마우스가 떠나면 동작 
+                5. keydown : 키가 내려갈때 동작 
+                6. keypress : 키를 누르고 있을 때 동작  
+                7. keyup : 키가 올라올 때 동작 
+                8. focus : 포커스를 가지면 동작 
+                9. blur : 포커스를 잃으면 동작 
+                10. submit : 서브밋할 때 동작 <form> 사용시 서버로 보내는 것 
+
+        3. 이벤트 대상 
+                1. 이벤트가 동작하는 HTML구성요소를 의미 
+                   클릭 이벤트를 실행한다면 버튼을 클릭시 이벤트가 실행된다 
+                2. 이벤트 객체의 target 속성으로 확인할 수 있다
+        
+        4. 이벤트 리스너 (Listener)
+                1. 이벤트가 발생하면 동작하는 함수ex. 클릭 이벤트 -> 클릭했네? 이거 해야지?
+                2. 선언 함수, 익명 함수 모두 리스너로 사용할 수 있다 
+                3. 이벤트 리스너의 매개변수는 이벤트 객체를 저장할 수 있다
+        
+        */
+    </script>
+    
+
+    <div>
+        <input type="button" value="클릭" id="btn1">
+    </div>
+    
+    <script>//               버튼위에 
+        //                  올라가는 텍스트 
+        /*
+            1. 고전 이벤트 모델
+               하나의 이벤트는 하나의 이벤트 리스너를 가질 수 있다 
+               이벤트 하나당 함수 하나 
+               이벤트를 등록할 때 이벤트 속성을 사용 
+               이벤트 등록 방식
+                    선언 함수
+                     function 함수명() {
+
+                     }
+                     문서객체.onclick = 함수명 / onclick이라는 프로퍼티에 함수명을 전달 함수명 뒤에 괄호()없음을 주의 
+                    익명 함수 (주로 사용하는 방식) 
+                     문서객체.onclick = function() { /어떤 객체를 클릭하면 ~~ 해주십시오 
+                    
+                     }
+
+            * 이벤트 속성이란?
+              이벤트를 등록시킬때 사용하는 속성 
+              on + 이벤트 타입의 형식으로 구성되어 있음 
+                예 : onclick, onmouseover, onsubmit 등
+
+
+        */
+                     
+         // 이벤트 리스너
+         function fnSayHello1(){
+            alert('Hello');
+        }
+        function fnSayHello2(){
+            alert('안녕하세요');
+        }
+        
+        // 이벤트 대상
+        var btn1 = document.getElementById('btn1');
+
+        // 고전 이벤트 등록 (하나의 이벤트 리스너만 등록할 수 있다.)
+        btn1.onclick = fnSayHello1;
+        btn1.onclick = fnSayHello2;
+
+        // 미션. btn1을 클릭하면 fnSayHello1과 fnSayHello2가 모두 실행되도록 처리하시오.
+        btn1.onclick = function(){
+            fnSayHello1();
+            fnSayHello2();
+        }
+                    /*고전 이벤트 모델  ,이벤트 리스너(함수)
+                    function fnSayHello1() {
+                        alert('Hello');
+                        alert('안녕하세요');
+                     }
+                     //function fnSayHello2() {
+                        //alert('안녕하세요');
+                     //}
+
+                     //버튼(이벤트 대상)
+                     var btn1 = document.getElementById('btn1','btn2'); 
+
+                     //고전 이벤트 등록(하나의 이벤트 리스너만 등록할 수 있음)
+                     btn1.onclick = fnSayHello1;
+                     
+
+                     //미션 btn1을 클릭하면 fnSayHello과 fnSayHello2가 모두 실행되도록 처리 
+                     //btn1.onclick = function(){
+                       // fnSayHello1();
+                       // fnSayHello2();
+                     //}
+                     //선생님 깃 보고 비교 
+
+
+                    
+                    //var vtn2 = document.getElementById('btn2');
+                        */
+    </script>
+
+    <div>
+        <input type="button" value="클릭" id="btn2">
+    </div>
+    <script>
+        /*
+            2. 표준 이벤트 모델 
+                하나의 이벤트가 여러 개의 이벤트 리스너를 가질 수 있음
+                이벤트를 등록할 때 이벤트 타입을 사용 
+                이벤트 등록 방식
+                    선언 함수
+                        function 함수명(){
+
+                        }
+                        문서객체.addEventListener('click', 함수명);
+                    익명 함수(주로 사용하는 방식) -- 주로 쓰는 함수 
+                        문서객체.addEventListener('click', function(){
+
+                        });
+                        문서객체.addEventListener('click', ()=>{
+
+                        });
+        */
+                    // 이벤트 리스너
+                    function fnSayGoodbye1(){
+                        alert('Good Bye');
+                    }
+                    function fnSayGoodbye2(){
+                        alert('잘가');
+                    }
+
+                    // 이벤트 대상 
+                    var btn2 = document.getElementById('btn2');
+
+                    // 표준 이벤트 등록
+                    btn2.addEventListener('click','fnSayGoodbye1');
+                    btn2.addEventListener('click','fnSayGoodbye2');
+
+
+    </script>
+
+    <div>
+        <!-- 이벤트 대상에 직접 이벤트를 등록함 -->
+        <input type="button" value="클릭" onclick="fnsayHi()"> 
+    </div>
+    <script> // 이벤트를 ↑ 위에서 거는 것 
+        /*
+            3. 인라인 이벤트 모델 
+                HTML 구성 요소에 직접 이벤트 속성을 추가하고 이벤트 리스너를 등록하는 방식이다 
+                간단한 작업의 경우에 이벤트 리스너를 생략하고 실행할 자바스크립트 코드를 직접 작성할 수도 있음(함수를 굳이 안 만들어도 된다는 소리)
+                이벤트 등록 방식 
+                    1. 선언 함수 (주로 사용하는 방식)
+                        function 함수명() {
+
+                        }
+                        <button onclick>="함수명()"> 주의! 함수 호출하듯 괄호()를 붙여서 이벤트 처리 ! 
+                    2. 이벤트 리스너 생략(펑션 안씀)
+                        <button onclic="자바스크립트 코드 작성">
+                
+                            */
+
+            // 이벤트 리스너 
+            function fnsayHi(){
+                alert('Hi');
+            }
+    </script>
+    <div>
+        <a href="https://naver.com" id="link">네이버로 이동하기</a> 
+    </div>
+    <script>// 이벤트를 ↑ 위에서 거는 것 , 이벤트 대상 
+        
+        //이벤트 대상
+        var link = document.getElementById('link');
+
+        //고전 이벤트 등록 (이벤트 리스너는 익명 함수를 사용)
+        link.onclick = function(event){ //이벤트 객체 : 클릭하면 알아서 자동으로 넘어오는 값 ,event
+            //alert('이벤트 타입 : ' + event.type); //프로퍼티 소환 
+            //alert('이벤트 대상 : ' + event.target); 
+            //alert(event.target.textContent); //이벤트가 a태그 전체를 타겟으로 돼 있었음
+            //alert('이벤트 대상' + this);
+            //alert(event.target.textContent);
+           // alert(this.textContent);
+           event.preventDefault(); //기본 동작을 방지하겠다 , 막겠다 a태그의 기본 동작은? 이동 
+           
+        }
+
+        //최종 용어정리는 노션에 
+    </script>
+
+
+</body>
+</html>
