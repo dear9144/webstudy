@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+  
 
     <div>
         <ul type="disc">
@@ -32,6 +33,8 @@
             </li>
         </ul>
     </div>
+
+
 
     <div>
         <dl>
@@ -131,38 +134,40 @@
 
     <div>
         <form method="post" enctype="multipart/form-data">
-    
-<div>
-    <label for="id">
-        아이디
-        <input type="text" placeholder="아이디" id="id">
-    </label>
-    <input type="button" value="중복확인"> <!-- 버튼의 텍스트는 value로 줄 수 있음-->
-</div>
-   <label for="pw">
-    비밀번호
-    <input type="password" placeholder="새 비밀번호" id="pw">
-   </label>
-   <div>
-    <label for="pw2">
-        비밀번호 확인
-        <input type="password" placeholder="비밀번호 확인" id="pw2">
-    </label>
-   </div>     
-       <div>
-        <label for="email">
-            이메일 
-            <input type="text" placeholder="이메일" id="email">
-        </label>
-        span@span <!-- 깃 다시 보기 -->
-        <input type="text" placeholder="직접 입력" list="site">
-        <!-- 목록 만들기-->
-        <datalist id="site">
-            <option value="gmail.com"></option>
-            <option value="naver.com"></option>
-            <option value="dalum.com"></option>
-        </datalist>
-       </div>
+            <div>
+                <label for="id">
+                    아이디
+                    <input type="text" placeholder="아이디" id="id">
+                </label>
+                <input type="button" value="중복확인">
+            </div>
+            <div>
+                <label for="pw">
+                    비밀번호
+                    <input type="password" placeholder="새 비밀번호" id="pw">
+                </label>
+            </div>
+            <div>
+                <label for="pw2">
+                    비밀번호 확인
+                    <input type="password" placeholder="비밀번호 확인" id="pw2">
+                </label>
+            </div>
+            <div>
+                <label for="email">
+                    이메일
+                    <input type="text" placeholder="이메일" id="email">
+                </label>
+                <span>@</span>
+                <input type="text" placeholder="직접 입력" list="site">
+                <datalist id="site">
+                    <option value="gmail.com"></option>
+                    <option value="naver.com"></option>
+                    <option value="daum.net"></option>
+                </datalist>
+            </div>
+
+
        <div>
         <fieldset>
             <legend>성별</legend> <!-- 박스 만들어짐-->
@@ -197,8 +202,9 @@
             <label for="etc">
                 <input type="checkbox" id="etc">기타
             </label>
-       
        </div>
+       
+       
        <div>
         <label for="city">
             거주지
@@ -213,29 +219,29 @@
         </label>
         <input type="text">
        </div>
+
        <div>
-            <label for="introduce">자기 소개</label>
-            <textarea rows="5" cols="40" placeholder="200자 이내 간단히 작성"></textarea>
-       </div>
-       <div>
+        <div><label for="introduce">자기 소개</label></div>
+        <textarea rows="5" cols="40" placeholder="200자 이내 간단히 작성"></textarea>
+    </div>
+    <div>
         <label for="document">
             이력서
             <input type="file">
         </label>
-       </div>
-       <div>
+    </div>
+    <div>
         <label for="date">
             제출일
             <input type="text">
         </label>
-        </div>
-        <div>
-            <button>제출</button>
-            <input type="reset" value="다시 입력"> <!-- 이 버튼들은 폼 안에 들어와있어야 함 -->
-        </div>
-    </form>
-       </div>
-
+    </div>
+    <div>
+        <button>제출</button>
+        <input type="reset" value="다시입력"><!-- 이 버튼들은 폼 안에 들어와있어야 함 -->
+    </div>
+</form>
+</div>
 
 </body>
 </html>
