@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <script>
+        //비동기 처리의 문제점 확인하기
+        //요청을 한 다음 응답이 올때까지 기다리지 않는다 
+        var a; //undefined
+        $.ajax({
+            //요청에 관한 정보 
+            type: 'GET',
+            url: 'product.txt',
+            async: true,
+            // 응답 
+            dataType: 'text',
+            success: function(data){  
+                a = data; //a = 'Hello World'를 기대하지만 , 응답이 올 때까지 기다리지 않고 다음을 이행한다 
+            }
+        });
+        console.log(a);
+    </script>
+
+    <script>
+        /*
+            Promise
+        */
+
+        // Promise 객체 생성하기
+        var promise = new Promise(function(resolve, reject){ //resolve : then() 메소드가 전달하는 함수가 저장, reject: catch()메소드가 전달하는 함수가 저장 
+           // resolve();
+            reject();
+        })
+
+        //Promise 객체의 then() 메소드 호출하기
+        promise.then(function(){
+            alert('resolve() 호출');
+        });
+
+        //Promise 객체의 catch() 메소드 호출하기
+        promise.catch(function(){
+            console.log('reject() 호출');
+        })
+
+    </script>
+
+    <script>
+
+        //$.ajax과 Promise 함께 사용하기 
+
+        //Promise 객체 생성과 then()/catch() 메소드 호출 
+        new Promise(function(resolve, reject){
+
+            $.ajax({
+                //요청
+                type: 'GET',
+                url: 'dproduct.txt',
+                async: true,
+                //응답 
+                dataType: 'text',
+                success: function(data){
+                    resolve(data); // then() 메소드에서 정의한 함수에 연결 , ajax 응답이 온 뒤resolve()가 호출
+                },
+                error: function(jqXHR){
+                    reject(jqXHR); //catch() 메소드에서 정의한 함수에 연결 
+                }
+            });
+
+        }).then(function(param){ //resolve의 data 호출로 인해서 매개변수 param에 data가 전달됐다 
+            console.log(param);
+        }).catch(function(param){   //reject(jqXHR); 호출로 인해서 매개변수 param에 jqXHR이 전달된다 
+            console.log(param.status + '(' + param.statusText + ')'); //status 응답코드 
+        });
+    </script>
+    
+    <script>
+        // ajax 동작 완료 후 다른 ajax 동작으로 연결되는 경우 
+        // 
+
+        function fnValidEmail(){
+            new Promise(function(resolve, reject){
+                $.ajax({
+                    // 사용자가 입력한 이메일이 DB에 있는지 점검을 요청
+                    success: function(data){
+                        if(data){
+                            resolve(); //사용 가능한 이메일이다 
+                        }else{
+                            reject();  //사용 불가능한 이메일이다  
+                        }
+                    }
+                });
+            }).then(function(){
+                $.ajax({
+                    //사용자가 입력한 이메일로 인증코드를 보내달라는 요청 
+                    success: function(data){
+                        if(data){
+                            // 인증코드 보내기 성공 
+                        }else{
+                            // 인증코드 보내기 실패 
+                        }
+                       
+                    
+                    }
+                })
+            })
+        }
+    </script>
+    
+    <script>
+        // Promise 객체가 필요한 또 다른 경우 : 타이머 함수 
+        
+        var a; //undefined 상태 
+        setTimeout(function(){
+            a = 10;
+        }, 3000); //3초 후 동작 
+        console.log(a);
+    </script>
+
+    <script>
+        
+        // Promise로 타이머 함수 동작 해결하기 
+
+        var a;
+        new Promise(function(resolve, reject){
+            setTimeout(function(){
+                resolve();
+            }, 3000); //3초 후에 resolve()가 호출된다는 약속 
+        }).then(function(){
+            a = 10;
+            alert(a);
+        });
+    </script>
+    
+    <script>
+        //소개. Promise 대신 콜백으로 처리하기
+        function fnFunc(callback){
+            $.ajax({
+                type: 'Get',
+                url: 'product.txt',
+                async: true,
+                //응답
+                dataType: 'text',
+                success: function(data){
+                    callback(data); //응답 결과를 다른 함수로 넘겨서 처리 
+                }
+            })
+        } 
+
+        fnFunc(function(data){ // 매개변수 callback 전달되는 익명 함수 
+            alert(data);
+        });     
+
+    </script>
+</body>
+</html>

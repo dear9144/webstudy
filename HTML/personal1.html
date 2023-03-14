@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인정보수정</title>
+</head>
+<body>
+<div>
+    <label for="emial">
+        이메일
+        <input type="text" id="email">
+    </label>
+    <span>@</span>
+    <input type="text" placeholder="직접 입력" list="site">
+</div> <datalist id="site">
+    <option value="gmail.com"></option>
+    <option value="naver.com"></option>
+    <option value="daum.net"></option>
+</datalist>
+</div>
+<div>
+    <label for="birthday">
+        생일
+    </label>
+    <input type="number" min="1" max="4" size="4">
+        년
+        <input type="number" min="1" max="2" size="2">
+        월
+        <input type="number" min="1" max="2" size="2">
+        일
+</div>
+<div>
+    <label for="city">
+        거주지
+        <select>
+            <option>서울</option>
+            <option>광주</option>
+            <option>대구</option>
+            <option>대전</option>
+            <option>부산</option>
+            <option>울산</option>
+            <option>인천</option>
+            <option>기타</option>
+        </select>
+    </label>
+   </div>
+   <div>
+    성별
+    <label for="m">
+        <input type="radio" id="m" name="gender" checked>남자
+        </label>
+    <label for="f">
+        <input type="radio" id="f" name="gender">여자
+    </label>
+   </div>
+   <div>
+    성별
+    <label for="trip">
+        <input type="checkbox" id="trip" name="gender" checked>여행
+        </label>
+    <label for="f">
+        <input type="checkbox" id="f" name="gender">여자
+    </label>
+   </div>
+    
+</body>
+</html>
